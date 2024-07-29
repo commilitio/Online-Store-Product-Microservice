@@ -1,0 +1,51 @@
+version: '3'
+services:
+  product-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/product-service
+      SPRING_DATASOURCE_USERNAME: user1
+      SPRING_DATASOURCE_PASSWORD: password1
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    networks:
+      - onlineStore-network
+
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: product-service
+      POSTGRES_USER: user1
+      POSTGRES_PASSWORD: password1
+    ports:
+      - "5432:5432"
+    networks:
+      - onlineStore-network
+    volumes:
+      - postgres:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    ports:
+      - "8888:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: userName@domain.com
+      PGADMIN_DEFAULT_PASSWORD: strongPassword
+    depends_on:
+      - postgres
+    networks:
+      - onlineStore-network
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+
+volumes:
+  pgadmin:
+  postgres:
+
+networks:
+  onlineStore-network:
+    driver: bridge

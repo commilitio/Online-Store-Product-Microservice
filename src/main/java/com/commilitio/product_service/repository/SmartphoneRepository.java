@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface SmartphoneRepository extends JpaRepository<Smartphone, Long> {
 
-    boolean existsByColorAndBatteryCapacityAndBrandAndScreenSize(String color, String batteryCapacity, String brand, String screenSize);
+    boolean checkIfSmartphoneExists(String color, String batteryCapacity, String brand, String screenSize);
 }

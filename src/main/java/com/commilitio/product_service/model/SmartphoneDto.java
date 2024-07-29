@@ -1,14 +1,17 @@
 package com.commilitio.product_service.model;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
-@Data
-@Builder
+@Getter
+@EqualsAndHashCode
+@ToString
+@SuperBuilder
 public class SmartphoneDto extends ProductDto {
 
     private final String color;
     private final String batteryCapacity;
     private final String brand;
     private final String screenSize;
+
 }

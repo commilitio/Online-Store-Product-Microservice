@@ -1,11 +1,14 @@
 package com.commilitio.product_service.model;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
+
 import java.math.BigDecimal;
 
-@Data
-@Builder
+@Getter
+@EqualsAndHashCode
+@ToString
+@SuperBuilder
 public class ProductDto {
 
     private final Long id;

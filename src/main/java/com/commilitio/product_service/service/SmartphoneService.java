@@ -28,7 +28,7 @@ public class SmartphoneService {
 
     @Transactional
     public SmartphoneDto addSmartphone(Smartphone smartphone) {
-        boolean smartphoneExists = smartphoneRepository.existsByColorAndBatteryCapacityAndBrandAndScreenSize(
+        boolean smartphoneExists = smartphoneRepository.checkIfSmartphoneExists(
                 smartphone.getColor(),
                 smartphone.getBatteryCapacity(),
                 smartphone.getBrand(),
